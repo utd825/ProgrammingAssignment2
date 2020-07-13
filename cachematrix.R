@@ -1,15 +1,32 @@
-## Put comments here that give an overall description of what your
-## functions do
+## I have set the input variable matrix as x and changed the cache matrix variable as ma
 
-## Write a short comment describing this function
+## I have used the same functions in the sample and changed the set and get variables to setmat and getmat
 
 makeCacheMatrix <- function(x = matrix()) {
-
+ma <- Null
+set <- function(y){
+    x <<- y
+    ma <<- NULL
+}
+get <- function()x
+setmat <- function (mat) ma <<- mat
+getmat <- function() ma
+list(set = set, get = get,
+     setmat = setmat,
+     getmat = getmat)
 }
 
 
-## Write a short comment describing this function
+## Used the same structure, changed the variables according the first functions
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+   ma <-x$getmat()
+   if(!is.null(ma)){
+        message("getting inversed matric")
+        return(ma)
+   }
+  data <- x$get()
+  ma <- mat(data, ...)
+  x$setmat(ma)
+  ma
 }
